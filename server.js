@@ -29,6 +29,9 @@ mongoose.connect(process.env.URL_DB, { dbName: 'LibraryDB' }, (err) => {
   if (err) throw err;
   console.log('db connected');
   //ROUTE API AUTH
+  app.use('/', (req, res) => {
+    res.send('Successfully');
+  });
   app.use('/api/auth/v1', authRoutes);
   app.use('/api/log/v1', routerLog);
   app.use('/api/books/v1', router);
