@@ -31,7 +31,7 @@ export const loginController = async (req, res) => {
       .status(202)
       .cookie('_apprftoken', rf_token, {
         httpOnly: true,
-        // sameSite: 'strict',
+        sameSite: 'strict',
         path: '/api/auth/v1/access',
         maxAge: 24 * 60 * 60 * 1000, //24h
       })
