@@ -11,7 +11,7 @@ import routerLog from './src/Routes/logLibrary.js';
 import env from 'dotenv';
 
 env.config();
-const port = process.env.PORT_SERVER || 4000;
+const port = process.env.PORT || 4000;
 
 //CONFIG EXPRESS
 const app = express();
