@@ -210,7 +210,7 @@ export const forgot = (req, res) => {
 // PAGINATION API
 export const paginationUsers = async (req, res) => {
   const skip = Number(req.query?.skip) || 0;
-  const perPage = req.query?.perPage || 20;
+  const perPage = req.query?.perPage || 35;
   try {
     const response = await UserModel.find().countDocuments();
     let totalData = response;
