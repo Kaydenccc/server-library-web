@@ -1,6 +1,5 @@
 const signOut = async (req, res) => {
   try {
-    console.log('logout');
     // clear cookie
     res.clearCookie('_apprftoken', { path: '/api/auth/v1/access' });
     //success

@@ -45,7 +45,6 @@ export const addBook = (req, res) => {
         // crop: 'fill',
       },
       (err, result) => {
-        console.log('IMAGE', result);
         if (err) throw err;
         fs.unlinkSync(file.path);
         // if there is no error input
@@ -101,7 +100,6 @@ export const seachBookByName = (req, res) => {
   BooksModel.find({ title: { $regex: '.*' + search + '.*', $options: 'i' } }, (err, data) => {
     if (err) return res.status(400).json({ msg: err.message });
     // if (!data) return res.status(404).json({ msg: 'Upss, Not found the book' });
-    console.log(data);
     if (data.length === 0) return res.status(404).json({ msg: 'Upss, Not found the book' });
     res.status(200).json({ msg: 'OK', data });
   });
@@ -109,15 +107,12 @@ export const seachBookByName = (req, res) => {
 //UPDATE BOOK
 export const updateBook = (req, res) => {
   const { id } = req.params;
-  console.log(id);
   BooksModel.findById(id, (err, book) => {
-    console.log('book=', id);
     if (err) return res.status(404).json({ msg: err.message });
     if (req.body.jumlah_buku) {
       LogModel.find((err, result) => {
         if (err) return res.status(400).json({ msg: err.message });
         const logs = result.filter((x) => JSON.stringify(x.data_book._id) === JSON.stringify(book._id));
-        console.log('LOGS=', logs);
         let available = Number(req.body.jumlah_buku) - logs.length;
         if (!req.file) {
           const data = {
@@ -235,7 +230,6 @@ export const paginationBooks = async (req, res) => {
 
 //FUNCTIN FOR DELETE IMAGE IN STORE
 const deleteFile = (filePath) => {
-  console.log(__dirname);
   let fileDir = path.join(__dirname, '/', filePath);
   console.log(fileDir);
   fs.unlink(fileDir, (err) => console.log(err));

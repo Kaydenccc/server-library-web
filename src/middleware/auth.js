@@ -10,8 +10,6 @@ const auth = (req, res, next) => {
     jwt.verify(token, process.env.ACCESS_TOKEN, (err, user) => {
       if (err) res.status(400).json({ msg: 'Authentication feild' });
       // success
-      console.log('user', user);
-      console.log('token', token);
       req.user = user;
       next();
     });

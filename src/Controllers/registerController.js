@@ -140,10 +140,8 @@ export const updateUser = async (req, res) => {
       const nimExist = await UserModel.findOne({ nim: req.body.nim });
       if (nimExist) return res.status(400).json({ msg: 'NIM already exist!' });
     }
-    console.log('BOOK=', book);
     if (err) return res.status(404).json({ msg: err.message });
     let data = '';
-    console.log('file', req.file);
     if (!req.file) {
       data = {
         ...req.body,
@@ -225,7 +223,6 @@ export const paginationUsers = async (req, res) => {
 
 //FUNCTIN FOR DELETE IMAGE IN STORE
 const deleteFile = (filePath) => {
-  console.log(__dirname);
   let fileDir = path.join(__dirname, '/', filePath);
   console.log(fileDir);
   fs.unlink(fileDir, (err) => console.log(err));

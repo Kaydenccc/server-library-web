@@ -1,8 +1,7 @@
 import { UserModel } from '../Models/UserModels.js';
 import bcrypt from 'bcrypt';
 import Joi from 'joi';
-import jwt from 'jsonwebtoken';
-import { access, refresh } from '../helper/createToken.js';
+import { refresh } from '../helper/createToken.js';
 
 // CONFIG JOI VALIDATION
 const Schema = Joi.object({
@@ -26,7 +25,6 @@ export const loginController = async (req, res) => {
     //IF VALID
     //GENERATE TOKEN
     const rf_token = refresh(userData);
-    console.log('refres token: ', rf_token);
     res
       .status(202)
       .cookie('_apprftoken', rf_token, {
