@@ -31,7 +31,6 @@ export const addLog = (req, res) => {
         available: book.available - 1,
       };
       BooksModel.findByIdAndUpdate(book._id, dataUpdate, (err, old) => {
-        console.log('UPDATE', dataUpdate);
         if (err) return res.status(400).json({ msg: err.message });
         const dataPeminjam = { ...req.body, title: book.title, kodeTransaksi: shortid.generate(), data_user: user, data_book: dataUpdate };
         LogModel.create(dataPeminjam, (err, data) => {
@@ -79,9 +78,7 @@ export const deletelog = (req, res) => {
   //FIND LOG BY ID END REDUCE JUMLAH_BUKU
   LogModel.findByIdAndDelete(id, (err, log) => {
     if (err) return res.status(400).json({ msg: err.message });
-    console.log(log);
     BooksModel.findById(log.data_book?._id, (err, book) => {
-      console.log(book);
       if (err) return res.status(400).json({ msg: err.message });
       if (!book) return res.status(404).json({ msg: 'Buku dengan nama "' + req.body.title + '" tidak ditemukan' });
       let jumlahBook = book.available;
