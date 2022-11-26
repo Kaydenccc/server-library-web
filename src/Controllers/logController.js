@@ -100,7 +100,7 @@ export const deletelog = (req, res) => {
 //SEARCH LOG
 export const searchlog = (req, res) => {
   const { search } = req.params;
-  LogModel.findOne({ kodeTransaksi: search }, (err, log) => {
+  LogModel.find({ kodeTransaksi: search }, (err, log) => {
     if (err) return res.status(400).json({ msg: err.message });
     if (!log) return res.status(404).json({ msg: 'Not Found Transaksi' });
     res.status(200).json({ msg: 'OK', log });
