@@ -146,7 +146,7 @@ export const updateBook = (req, res) => {
                 image: result.secure_url,
                 public_id: result.public_id,
               };
-              // deleteFile(book.image);
+              deleteFile(book.image);
               BooksModel.findByIdAndUpdate(book.id, data, async (err, dataLama) => {
                 if (err) return res.status(400).json({ msg: err.message });
                 await cloudinary.uploader.destroy(dataLama.public_id);

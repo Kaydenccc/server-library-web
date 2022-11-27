@@ -20,7 +20,7 @@ app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(cookieParser());
 app.use('/images', express.static('images'));
-app.use('/books-images', express.static('booksImages'));
+app.use('/booksImages', express.static('booksImages'));
 
 // KONFIGURASI MULTER
 multerConfig(app);
