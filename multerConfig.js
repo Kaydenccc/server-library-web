@@ -4,7 +4,7 @@ export const multerConfig = (app) => {
   //COONFIGURASI MULTER
   const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-      if (req.path === '/api/books/v1/add/book') {
+      if (req.path === 'https://client-library-web.vercel.app/api/books/v1/add/book') {
         // jika pathnya "/add/book"
         cb(null, 'booksImages');
       } else {
