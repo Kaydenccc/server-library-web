@@ -193,19 +193,6 @@ export const deleteUser = (req, res) => {
     return res.status(201).json({ msg: 'User deleted!', data });
   });
 };
-//forgot
-export const forgot = (req, res) => {
-  const { id } = req.params;
-  UserModel.findByIdAndDelete(id, (err, data) => {
-    if (err) return res.status(400).json({ msg: err.message });
-
-    if (!data) return res.status(400).json({ msg: 'Data Not Found' });
-    if (data) {
-      res.status(201).json({ msg: 'User deleted!', data });
-      deleteFile(data.image);
-    }
-  });
-};
 
 // PAGINATION API
 export const paginationUsers = async (req, res) => {
@@ -224,6 +211,5 @@ export const paginationUsers = async (req, res) => {
 //FUNCTIN FOR DELETE IMAGE IN STORE
 const deleteFile = (filePath) => {
   let fileDir = path.join(__dirname, '/', filePath);
-  console.log(fileDir);
   fs.unlink(fileDir, (err) => console.log(err));
 };

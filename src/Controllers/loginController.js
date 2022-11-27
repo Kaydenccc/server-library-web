@@ -25,7 +25,7 @@ export const loginController = async (req, res) => {
     //IF VALID
     //GENERATE TOKEN
     const rf_token = refresh(userData);
-    res
+    return res
       .status(202)
       .cookie('_apprftoken', rf_token, {
         httpOnly: true,
