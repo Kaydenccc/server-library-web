@@ -15,10 +15,10 @@ const port = process.env.PORT || 4000;
 
 //CONFIG EXPRESS
 const app = express();
-app.use(express.json()); // for parsing application/json
-app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(cors({ credentials: true, origin: 'https://client-library-web.vercel.app' }));
 app.use(cookieParser());
+app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use('/images', express.static('images'));
 app.use('/books-images', express.static('booksImages'));
 
