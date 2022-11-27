@@ -57,7 +57,7 @@ export const addBook = (req, res) => {
         //create data or save data to db
         BooksModel.create(data, (err, data) => {
           if (err) return res.status(404).json({ msg: err.message });
-          res.status(201).json({ msg: 'OK', data });
+          return res.status(201).json({ msg: 'OK', data });
         });
       }
     );
@@ -70,7 +70,7 @@ export const addBook = (req, res) => {
     //create data or save data to db
     BooksModel.create(data, (err, data) => {
       if (err) return res.status(404).json({ msg: err.message });
-      res.status(201).json({ msg: 'OK', data });
+      return res.status(201).json({ msg: 'OK', data });
     });
   }
 };

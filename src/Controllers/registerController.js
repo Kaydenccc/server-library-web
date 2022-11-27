@@ -175,7 +175,7 @@ export const updateUser = async (req, res) => {
             res.status(201).json({ msg: 'User updated!', data });
           });
           fs.unlinkSync(file.path);
-          // deleteFile(book.image);
+          // deleteFile(file.path);
         }
       );
     }
