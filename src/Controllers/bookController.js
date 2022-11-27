@@ -106,6 +106,7 @@ export const seachBookByName = (req, res) => {
 };
 //UPDATE BOOK
 export const updateBook = (req, res) => {
+  console.log(req.file);
   const { id } = req.params;
   BooksModel.findById(id, (err, book) => {
     if (err) return res.status(404).json({ msg: err.message });
