@@ -58,7 +58,7 @@ export const addBook = (req, res) => {
         //create data or save data to db
         BooksModel.create(data, (err, data) => {
           if (err) return res.status(404).json({ msg: err.message });
-          return res.status(201).json({ msg: 'OK', data });
+          res.status(201).json({ msg: 'OK', data });
         });
       }
     );
@@ -71,7 +71,7 @@ export const addBook = (req, res) => {
     //create data or save data to db
     BooksModel.create(data, (err, data) => {
       if (err) return res.status(404).json({ msg: err.message });
-      return res.status(201).json({ msg: 'OK', data });
+      res.status(201).json({ msg: 'OK', data });
     });
   }
 };
@@ -122,7 +122,7 @@ export const updateBook = (req, res) => {
           };
           BooksModel.findByIdAndUpdate(book.id, data, (err, dataLama) => {
             if (err) return res.status(400).json({ msg: err.message });
-            return res.status(201).json({ msg: 'Book updated!', data });
+            res.status(201).json({ msg: 'Book updated!', data });
           });
         } else {
           //GET FILE
@@ -150,7 +150,7 @@ export const updateBook = (req, res) => {
               BooksModel.findByIdAndUpdate(book.id, data, async (err, dataLama) => {
                 if (err) return res.status(400).json({ msg: err.message });
                 await cloudinary.uploader.destroy(dataLama.public_id);
-                return res.status(201).json({ msg: 'Book updated!', data });
+                res.status(201).json({ msg: 'Book updated!', data });
               });
             }
           );
