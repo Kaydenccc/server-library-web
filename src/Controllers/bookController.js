@@ -221,7 +221,7 @@ export const paginationBooks = async (req, res) => {
   try {
     const response = await BooksModel.find({}).countDocuments();
     let totalData = response;
-    const result = await BooksModel.find({}).sort({ updatedAt: -1 }).skip(skip).limit(perPage);
+    const result = await BooksModel.find({}).sort({ createdAt: -1 }).skip(skip).limit(perPage);
     return res.status(200).json({ msg: 'Success get data', data: result, totalData, perPage, total: result.length });
   } catch (err) {
     return res.status(400).json({ msg: err.message });
