@@ -45,6 +45,7 @@ export const addBook = (req, res) => {
         // crop: 'fill',
       },
       (err, result) => {
+        deleteFile(file.path);
         if (err) throw err;
         fs.unlinkSync(file.path);
         // if there is no error input
