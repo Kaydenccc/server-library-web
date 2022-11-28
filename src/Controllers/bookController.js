@@ -133,9 +133,9 @@ export const updateBook = (req, res) => {
             file.path,
             {
               folder: 'LIBRARY/books',
-              width: 250,
-              height: 250,
-              crop: 'fill',
+              // width: 250,
+              // height: 250,
+              // crop: 'fill',
             },
             (err, result) => {
               if (err) throw err;
@@ -175,9 +175,9 @@ export const updateBook = (req, res) => {
           file.path,
           {
             folder: 'LIBRARY/books',
-            width: 250,
-            height: 250,
-            crop: 'fill',
+            // width: 250,
+            // height: 250,
+            // crop: 'fill',
           },
           (err, result) => {
             if (err) throw err;
