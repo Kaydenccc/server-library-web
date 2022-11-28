@@ -46,7 +46,7 @@ export const addBook = (req, res) => {
       },
       (err, result) => {
         if (err) throw err;
-        // fs.unlinkSync(file.path);
+        fs.unlinkSync(file.path);
         deleteFile(file.path);
         // if there is no error input
         const data = {
@@ -139,7 +139,7 @@ export const updateBook = (req, res) => {
             },
             (err, result) => {
               if (err) throw err;
-              // fs.unlinkSync(file.path);
+              fs.unlinkSync(file.path);
               deleteFile(book.image);
 
               // if there is no error input
