@@ -46,7 +46,8 @@ export const addBook = (req, res) => {
       },
       (err, result) => {
         if (err) throw err;
-        fs.unlinkSync(file.path);
+        // fs.unlinkSync(file.path);
+        deleteFile(file.path);
         // if there is no error input
         const data = {
           ...req.body,
@@ -138,7 +139,9 @@ export const updateBook = (req, res) => {
             },
             (err, result) => {
               if (err) throw err;
-              fs.unlinkSync(file.path);
+              // fs.unlinkSync(file.path);
+              deleteFile(book.image);
+
               // if there is no error input
               const data = {
                 ...req.body,
@@ -146,7 +149,6 @@ export const updateBook = (req, res) => {
                 image: result.secure_url,
                 public_id: result.public_id,
               };
-              deleteFile(book.image);
               BooksModel.findByIdAndUpdate(book.id, data, async (err, dataLama) => {
                 if (err) return res.status(400).json({ msg: err.message });
                 await cloudinary.uploader.destroy(dataLama.public_id);
