@@ -1,6 +1,6 @@
 export const config = {
   user: 'ffadilah682@gmail.com',
-  clientId: '921605881228-tkffhv2k72lr5cfuo2omgl2alhmv5vhm.apps.googleusercontent.com',
-  clientSecret: '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',
-  refreshToken: '1//04gt8WjtfOT0VCgYIARAAGAQSNwF-L9Ir7YtGG9wKotXrcPiQ4055seCsmhouJ6hr6WAIEGugeraMhiBlWcoo-iNWbBqQQOPMbTk',
+  clientId: '119738350431-67sjbtqcs8336u4ppnqiuvd34h4beihi.apps.googleusercontent.com',
+  clientSecret: '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',
+  refreshToken: '1//04wSQQEXZEQ9ACgYIARAAGAQSNwF-L9IrrFKuCAfzjg0leUb_YwUwB3ijhJFsZU7ekXfdJacgVem1FMK5M99Lq_fpPJCxWBQ86n8',
 };

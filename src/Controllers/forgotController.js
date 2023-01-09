@@ -7,9 +7,12 @@ const forgotController = async (req, res) => {
   try {
     // GET EMAIL
     const { email } = req.body;
+    console.log(email);
+
     // CHECK EMAIL
     const user = await UserModel.findOne({ email });
     if (!user) return res.status(400).json({ msg: 'The email is not already register' });
+    console.log(user.id);
     // CREATE AC TOKEN
     const ac_token = access(user);
     // SEND EMAIL

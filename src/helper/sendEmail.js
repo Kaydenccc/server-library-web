@@ -21,7 +21,7 @@ export const sendEmailReset = (rescipient, url, text, name) => {
     },
   });
   const mail_opations = {
-    from: `The Web Library <${config.user}>`,
+    from: `The Web Library < ${config.user} >`,
     to: rescipient,
     subject: 'Reset Password',
     html: get_html_message(name, url, text),
