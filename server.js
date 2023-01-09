@@ -28,7 +28,7 @@ multerConfig(app);
 mongoose.connect(process.env.URL_DB, { dbName: 'LibraryDB' }, (err) => {
   if (err) throw err;
   console.log('db connected');
-  //ROUTE API AUTH
+  //ROUTE API AUTHH
   app.get('/', (req, res) => {
     res.send('Successfully yoo');
   });
