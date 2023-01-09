@@ -30,7 +30,7 @@ mongoose.connect(process.env.URL_DB, { dbName: 'LibraryDB' }, (err) => {
   console.log('db connected');
   //ROUTE API AUTH
   app.get('/', (req, res) => {
-    res.send('Successfully');
+    res.send('Successfully yoo');
   });
   app.use('/api/auth/v1', authRoutes);
   app.use('/api/log/v1', routerLog);
