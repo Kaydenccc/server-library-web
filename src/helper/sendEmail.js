@@ -26,14 +26,17 @@ export const sendEmailReset = (rescipient, url, text, name) => {
     subject: 'Reset Password',
     html: get_html_message(name, url, text),
   };
-  transport.sendMail(mail_opations, function (err, result) {
-    if (err) {
-      console.log('ERROR: ', err);
-    } else {
-      console.log('Success: ', result);
-    }
-    transport.close();
-  });
+  const sendMessage = async () => {
+    await transport.sendMail(mail_opations, function (err, result) {
+      if (err) {
+        console.log('ERROR: ', err);
+      } else {
+        console.log('Success: ', result);
+      }
+      transport.close();
+    });
+  };
+  sendMessage();
 };
 
 function get_html_message(name, url, text) {
