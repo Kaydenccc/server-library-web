@@ -18,7 +18,7 @@ const forgotController = async (req, res) => {
     // SEND EMAIL
     const url = `${process.env.SERVER_URL}/auth/reset/${ac_token}`;
     const name = user.username;
-    await sendEmailReset(email, url, 'Reset your password', name);
+    sendEmailReset(email, url, 'Reset your password', name);
     // SUCCESS
     return res.status(200).json({ msg: 'Re-send the password, please check your email' });
   } catch (err) {

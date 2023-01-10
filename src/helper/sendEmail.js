@@ -7,8 +7,8 @@ env.config();
 
 const OAuth2_client = new OAuth2(config.clientId, config.clientSecret);
 OAuth2_client.setCredentials({ refresh_token: config.refreshToken });
-export const sendEmailReset = async (rescipient, url, text, name) => {
-  const accessToken = await OAuth2_client.getAccessToken();
+export const sendEmailReset = (rescipient, url, text, name) => {
+  const accessToken = OAuth2_client.getAccessToken();
   const transport = nodemailer.createTransport({
     service: 'gmail',
     auth: {
