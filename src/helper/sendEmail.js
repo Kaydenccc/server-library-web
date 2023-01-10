@@ -7,8 +7,8 @@ env.config();
 
 const OAuth2_client = new OAuth2(config.clientId, config.clientSecret);
 OAuth2_client.setCredentials({ refresh_token: config.refreshToken });
-export const sendEmailReset = (rescipient, url, text, name) => {
-  const accessToken = OAuth2_client.getAccessToken();
+export const sendEmailReset = async (rescipient, url, text, name) => {
+  const accessToken = await OAuth2_client.getAccessToken();
   const transport = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -26,17 +26,14 @@ export const sendEmailReset = (rescipient, url, text, name) => {
     subject: 'Reset Password',
     html: get_html_message(name, url, text),
   };
-  const sendMessage = async () => {
-    await transport.sendMail(mail_opations, function (err, result) {
-      if (err) {
-        console.log('ERROR: ', err);
-      } else {
-        console.log('Success: ', result);
-      }
-      transport.close();
-    });
-  };
-  sendMessage();
+  transport.sendMail(mail_opations, function (err, result) {
+    if (err) {
+      console.log('ERROR: ', err);
+    } else {
+      console.log('Success: ', result);
+    }
+    transport.close();
+  });
 };
 
 function get_html_message(name, url, text) {
